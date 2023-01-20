@@ -1,0 +1,17 @@
+name: "my workflow"
+run-name: "run: ${{ github.run_id }} 🚀"
+
+on:
+  [push, workflow_dispatch]
+
+jobs:
+  is-this-a-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send webhook
+        uses: distributhor/workflow-webhook@v2
+        env:
+          verbose: true
+          event_name: 'mywebhookevent'
+          webhook_url: https://myurl/api/v2/github
+          data: '{ "weapon": "hammer", "drink" : "beer" }'
